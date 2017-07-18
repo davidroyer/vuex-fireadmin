@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import firebase, { auth, GoogleProvider, GithubProvider } from '../firebase.js';
+import router from '../router'
 
 Vue.use(Vuex)
 
@@ -18,6 +19,7 @@ const state = {
 const mutations = {
   setUser (state, value) {
     state.user = value
+    router.push('/admin')
   }
 }
 
@@ -29,10 +31,12 @@ const actions = {
       }
     })
   },
+
   async signInWithGoogle({commit}) {
     let {user} = await auth.signInWithRedirect(GoogleProvider)
     commit('setUser', user)
   },
+
   async logout({commit}) {
     await auth.signOut()
     commit('setUser', null)
@@ -44,8 +48,6 @@ const actions = {
 //   user: state => state.user
 // }
 
-// A Vuex instance is created by combining the state, mutations, actions,
-// and getters.
 export default new Vuex.Store({
   state,
   // getters,
