@@ -32,22 +32,12 @@ export default {
     ...mapState(['user'])
   },
   beforeCreate () {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.$store.commit('setUser', user);
-      }
-    })
-  },
-  created() {
-    // this.checkForActiveUser()
+    this.$store.dispatch('checkForActiveUser')
   },
 
   methods: {
     loginGoogle () {
-      auth.signInWithRedirect(GoogleProvider)
-      .then((result) => {
-        this.$store.commit('setUser', result.user)
-      })
+      this.$store.dispatch('signInWithGoogle')
     },
 
     loginGithub () {
@@ -67,20 +57,7 @@ export default {
     },
 
     logout () {
-      auth.signOut()
-      .then(() => {
-        this.$store.commit('setUser', null);
-      }).catch(function(error) {
-          // An error happened.
-      });
-    },
-
-    checkForActiveUser() {
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          this.user = user
-        }
-      })
+      this.$store.dispatch('logout')
     }
   }
 }

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import firebase, { auth, GoogleProvider, GithubProvider } from '../firebase.js';
 
 Vue.use(Vuex)
 
@@ -23,7 +24,27 @@ const mutations = {
 // actions are functions that causes side effects and can involve
 // asynchronous operations.
 const actions = {
-
+  checkForActiveUser({commit}) {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        commit('setUser', user)
+      }
+    })
+  },
+  signInWithGoogle({commit}) {
+    auth.signInWithRedirect(GoogleProvider)
+    .then((result) => {
+      commit('setUser', result.user)
+    })
+  },
+  logout({commit}) {
+    auth.signOut()
+    .then(() => {
+      commit('setUser', null);
+    }).catch(function(error) {
+        // An error happened.
+    });
+  }
 }
 
 // getters are functions
