@@ -10,40 +10,64 @@
     </template>
     <template v-else>
       <button @click="login">Login</button>
+      <button @click="loginGithub">Login Github</button>
+      <button @click="loginAnonymously">Login Anonymously</button>
     </template>
   </div>
 </template>
 
 <script>
-import firebase, { auth, provider } from '../firebase.js';
-
+import firebase, { auth, GoogleProvider, GithubProvider } from '../firebase.js';
+import {mapState} from 'vuex'
 export default {
   name: 'admin',
   data () {
     return {
       msg: 'Welcome to Your Vue.js PWA',
-      user: null
+      // user: null
     }
   },
-
+  computed: {
+    ...mapState(['user'])
+  },
+  beforeCreate () {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.commit('setUser', user);
+      }
+    })
+  },
   created() {
-    this.checkForActiveUser()
+    // this.checkForActiveUser()
   },
 
   methods: {
     login () {
-      auth.signInWithPopup(provider)
+      auth.signInWithRedirect(GoogleProvider)
       .then((result) => {
-        this.user = result.user;
+        this.$store.commit('setUser', result.user)
       })
     },
+    loginGithub () {
+      auth.signInWithRedirect(GithubProvider)
+      .then((result) => {
+        this.$store.commit('setUser', result.user)
+      })
+    },
+    loginAnonymously () {
+      firebase.auth().signInAnonymously().catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        this.$store.commit('setUser', result.user);
 
+        // ...
+      })
+    },
     logout () {
       auth.signOut()
       .then(() => {
-        this.user = null
-        alert('You are signed out!')
-
+        this.$store.commit('setUser', null);
       }).catch(function(error) {
           // An error happened.
       });
