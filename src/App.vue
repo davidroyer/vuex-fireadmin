@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <header>
-      <span class="siteTitle">Vue.js PWA</span>
+      <span class="siteTitle">Vuex-FireAdmin</span>
       <router-link to="/" exact>Home</router-link>
       <router-link to="/admin" exact>Admin</router-link>
     </header>
     <main>
-      <img class="vueLogo" src="./assets/logo.png" alt="Vue.js PWA">
+      <h1 class="currentPage">{{$route.name}}</h1>
+      <!-- <img class="vueLogo" src="./assets/logo.png" alt="Vue.js PWA"> -->
       <router-view></router-view>
     </main>
   </div>
@@ -24,6 +25,37 @@ body {
 }
 .vueLogo {
   width: 75px;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+main {
+  padding: 1em 1em 3em;
+}
+button {
+  -webkit-appearance: none;
+  background: inherit;
+  border: 2px solid #35495e;
+  padding: .75em 1em;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: 3px;
+  flex: 1 1 150px;
+  margin: 1em;
+  max-width: 200px;
+  min-width: 150px;
+  cursor: pointer;
+  transition: .2s ease;
+
+  &:hover {
+    background: rgba(53, 73, 94, 0.72);
+    color: white;
+    font-weight: 800;
+    text-decoration: underline;
+  }
 }
 .siteTitle {
   flex: 1 1 100%;
@@ -53,7 +85,7 @@ a {
 
 main {
   text-align: center;
-  margin-top: 40px;
+
 }
 
 header {

@@ -1,6 +1,5 @@
 <template>
   <div class="admin">
-    <h1>Admin</h1>
     <template v-if="user">
         <button @click="logout">Logout</button>
       <div class="user">
@@ -9,9 +8,11 @@
       </div>
     </template>
     <template v-else>
-      <button @click="login">Login</button>
-      <button @click="loginGithub">Login Github</button>
-      <button @click="loginAnonymously">Login Anonymously</button>
+      <div class="buttons">
+        <button @click="loginGoogle">Login</button>
+        <button @click="loginGithub">Login Github</button>
+        <button @click="loginAnonymously">Login Anonymously</button>
+      </div>
     </template>
   </div>
 </template>
@@ -42,28 +43,29 @@ export default {
   },
 
   methods: {
-    login () {
+    loginGoogle () {
       auth.signInWithRedirect(GoogleProvider)
       .then((result) => {
         this.$store.commit('setUser', result.user)
       })
     },
+
     loginGithub () {
       auth.signInWithRedirect(GithubProvider)
       .then((result) => {
         this.$store.commit('setUser', result.user)
       })
     },
+
     loginAnonymously () {
       firebase.auth().signInAnonymously().catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         this.$store.commit('setUser', result.user);
-
-        // ...
       })
     },
+
     logout () {
       auth.signOut()
       .then(() => {
