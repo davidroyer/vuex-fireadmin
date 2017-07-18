@@ -21,8 +21,6 @@ const mutations = {
   }
 }
 
-// actions are functions that causes side effects and can involve
-// asynchronous operations.
 const actions = {
   checkForActiveUser({commit}) {
     auth.onAuthStateChanged((user) => {
@@ -31,19 +29,13 @@ const actions = {
       }
     })
   },
-  signInWithGoogle({commit}) {
-    auth.signInWithRedirect(GoogleProvider)
-    .then((result) => {
-      commit('setUser', result.user)
-    })
+  async signInWithGoogle({commit}) {
+    let {user} = await auth.signInWithRedirect(GoogleProvider)
+    commit('setUser', user)
   },
-  logout({commit}) {
-    auth.signOut()
-    .then(() => {
-      commit('setUser', null);
-    }).catch(function(error) {
-        // An error happened.
-    });
+  async logout({commit}) {
+    await auth.signOut()
+    commit('setUser', null)
   }
 }
 
