@@ -9,8 +9,8 @@
     </template>
     <template v-else>
       <div class="buttons">
-        <button @click="loginGoogle">Login</button>
-        <button @click="loginGithub">Login Github</button>
+        <button @click="loginGoogle">Login with Google</button>
+        <!-- <button @click="loginGithub">Login Github</button> -->
         <button @click="loginAnonymously">Login Anonymously</button>
       </div>
     </template>
