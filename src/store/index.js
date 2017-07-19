@@ -17,8 +17,12 @@ const state = {
 // mutations must be synchronous and can be recorded by plugins
 // for debugging purposes.
 const mutations = {
+  setActiveUser (state, value) {
+    state.user = value
+  },
   setUser (state, value) {
     state.user = value
+    router.push('/admin')
   }
 }
 
@@ -26,7 +30,7 @@ const actions = {
   checkForActiveUser({commit}) {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        commit('setUser', user)
+        commit('setActiveUser', user)
       }
     })
   },

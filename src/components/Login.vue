@@ -30,7 +30,7 @@ export default {
     ...mapState(['user'])
   },
   beforeCreate () {
-    this.$store.dispatch('checkForActiveUser')
+    // this.$store.dispatch('checkForActiveUser')
   },
 
   methods: {
