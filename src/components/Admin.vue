@@ -1,12 +1,18 @@
 <template>
   <div class="admin">
+
     <template v-if="user">
-        <button @click="logout">Logout</button>
+      <button @click="logout">Logout</button>
       <div class="user">
         <h2 v-text="user.displayName"></h2>
         <img class="avatar" :src="user.photoURL" alt="">
       </div>
+      <router-link to="/admin/settings">Settings</router-link>
+      <transition name="slide-left" mode="out-in">
+        <router-view class="child-view"></router-view>
+      </transition>
     </template>
+
     <template v-else>
       <div class="buttons">
         <button @click="loginGoogle">Login with Google</button>
@@ -69,6 +75,9 @@ h1, h2 {
   font-weight: normal;
 }
 
+a {
+  color: blue;
+}
 .avatar {
   width: 100px;
 }

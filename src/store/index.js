@@ -19,7 +19,6 @@ const state = {
 const mutations = {
   setUser (state, value) {
     state.user = value
-    router.push('/admin')
   }
 }
 
