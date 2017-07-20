@@ -18,19 +18,12 @@
 </template>
 
 <script>
-import firebase, { auth, GoogleProvider, GithubProvider } from '../firebase.js';
 import {mapState} from 'vuex'
 export default {
   name: 'login',
-  data () {
-    return {
-    }
-  },
+
   computed: {
     ...mapState(['user'])
-  },
-  beforeCreate () {
-    // this.$store.dispatch('checkForActiveUser')
   },
 
   methods: {
@@ -39,19 +32,11 @@ export default {
     },
 
     loginGithub () {
-      auth.signInWithRedirect(GithubProvider)
-      .then((result) => {
-        this.$store.commit('setUser', result.user)
-      })
+      this.$store.dispatch('signInWithGithub')
     },
 
     loginAnonymously () {
-      firebase.auth().signInAnonymously().catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        this.$store.commit('setUser', result.user);
-      })
+      this.$store.dispatch('signInAnonymously')
     },
 
     logout () {

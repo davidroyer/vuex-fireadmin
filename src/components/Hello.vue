@@ -6,12 +6,7 @@
 <script>
 // import firebase, { auth, provider } from './firebase.js';
 export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js PWA'
-    }
-  }
+  name: 'hello'
 }
 </script>
 

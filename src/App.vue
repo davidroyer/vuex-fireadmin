@@ -2,28 +2,47 @@
   <div id="app">
     <header>
       <span class="siteTitle">Vuex-FireAdmin</span>
-      <router-link to="/" >Home</router-link>
+      <router-link to="/" exact >Home</router-link>
       <router-link to="/admin" >Admin</router-link>
     </header>
     <main>
-      <h1 class="currentPage">{{$route.name}}</h1>
-      <!-- <img class="vueLogo" src="./assets/logo.png" alt="Vue.js PWA"> -->
+      <div class="top">
+        <h1 class="currentPage">{{$route.name}}</h1>
+        <button v-if="$store.state.user && $route.meta.requiresAuth" @click="logout">Logout</button>
+      </div>
 
-        <transition name="fade" mode="out-in">
-          <router-view class="view"></router-view>
-        </transition>
+      <transition name="fade" mode="out-in">
+        <router-view class="view"></router-view>
+      </transition>
 
     </main>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'app'
+  name: 'app',
+  methods: {
+    logout () {
+      this.$store.dispatch('logout')
+    }
+  }
 }
 </script>
 
 <style lang="scss">
+main a {
+    color: #35495e;
+    text-align: left;
+    margin-left: 0;
+}
+.top {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .35s ease;
 }

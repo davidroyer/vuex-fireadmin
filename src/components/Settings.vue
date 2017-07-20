@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="settings">
-    <h1>Settings Go Here</h1>
+    <h2>The Settings will go here</h2>
+    <button @click="$router.push('/admin')">Back</button>
   </div>
 </template>
 

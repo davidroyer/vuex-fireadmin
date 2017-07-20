@@ -5,55 +5,61 @@ import router from '../router'
 
 Vue.use(Vuex)
 
-// root state object.
-// each Vuex instance is just a single state tree.
 const state = {
   user: null
 }
 
-// mutations are operations that actually mutates the state.
-// each mutation handler gets the entire state tree as the
-// first argument, followed by additional payload arguments.
-// mutations must be synchronous and can be recorded by plugins
-// for debugging purposes.
 const mutations = {
   setActiveUser (state, value) {
     state.user = value
   },
   setUser (state, value) {
     state.user = value
-    router.push('/admin')
   }
 }
 
 const actions = {
   checkForActiveUser({commit}) {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
+    return new Promise((resolve, reject) => {
+      auth.onAuthStateChanged((user) => {
+        resolve(user)
         commit('setActiveUser', user)
-      }
+      }, (error) => {
+        console.log(error)
+      })
     })
   },
+  
+  promiseCheck({dispatch, commit}) {
+    dispatch('checkForActiveUser')
+    .then((fulfilled) => {
 
-  async signInWithGoogle({commit}) {
-    let {user} = await auth.signInWithRedirect(GoogleProvider)
-    commit('setUser', user)
+    }).catch((error) => {
+        // An error happened.
+    });
+  },
+
+  signInWithGoogle({commit}) {
+    auth.signInWithRedirect(GoogleProvider)
+  },
+
+  signInWithGithub () {
+    auth.signInWithRedirect(GithubProvider)
+  },
+
+  signInAnonymously () {
+    console.log('set this up');
   },
 
   async logout({commit}) {
     await auth.signOut()
     commit('setUser', null)
+    router.replace('/login')
   }
 }
 
-// getters are functions
-// const getters = {
-//   user: state => state.user
-// }
-
 export default new Vuex.Store({
   state,
-  // getters,
   actions,
   mutations
 })
