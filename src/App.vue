@@ -8,7 +8,7 @@
     <main>
       <div class="top">
         <h1 class="currentPage">{{$route.name}}</h1>
-        <button v-if="$store.state.user && $route.meta.requiresAuth" @click="logout">Logout</button>
+        <button class="logout" v-if="$store.state.user && $route.meta.requiresAuth" @click="logout">Logout</button>
       </div>
 
       <transition name="fade" mode="out-in">
@@ -32,10 +32,23 @@ export default {
 </script>
 
 <style lang="scss">
-main a {
+.currentPage {
+  margin: .25em 0 .5em;
+  font-weight: 600;
+}
+main {
+  padding-top: 0;
+  a {
     color: #35495e;
     text-align: left;
     margin-left: 0;
+  }
+}
+.logout {
+  flex: none;
+  padding: .25em .5em;
+  margin: 0;
+  min-width: 0;
 }
 .top {
   display: flex;
@@ -76,6 +89,7 @@ body {
 }
 main {
   padding: 1em 1em 3em;
+  padding-top: 0;
 }
 button {
   -webkit-appearance: none;

@@ -3,7 +3,7 @@
 
     <template v-if="user">
       <div class="leftSide">
-        <h2 v-text="user.displayName"></h2>
+        <h2 class="displayName" v-text="user.displayName"></h2>
         <img class="avatar" :src="user.photoURL" alt="">
         <router-link to="/admin/settings">Settings</router-link>
       </div>
@@ -40,9 +40,12 @@ export default {
 h1, h2 {
   font-weight: normal;
 }
-
+.displayName {
+  margin-top: 0;
+}
 .avatar {
   width: 100px;
+  border-radius: 50%;
 }
 ul {
   list-style-type: none;
@@ -64,6 +67,7 @@ li {
 
 button.back {
   margin-left: 0;
+  margin: 0;
 }
 .leftSide {
   border-right: 2px solid gray;
