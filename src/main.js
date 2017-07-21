@@ -11,8 +11,10 @@ Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
   store.dispatch('checkForActiveUser').then(() => {
     let routeIsLogin = to.path === '/login' ? true : false
+    let routeWasLogin = from.path === '/login' ? true : false
     let currentUser = store.state.user;
     let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+
 
     if (requiresAuth && !currentUser) {
       next('login')
@@ -20,7 +22,12 @@ router.beforeEach((to, from, next) => {
     if (routeIsLogin && currentUser) {
       next('admin')
     }
-    else next()
+    if (routeWasLogin && !currentUser && requiresAuth) {
+      alert('You need to login first')
+    }
+    else {
+      next()
+    }
   })
 });
 /* eslint-disable no-new */

@@ -12,9 +12,6 @@ const state = {
 const mutations = {
   setActiveUser (state, value) {
     state.user = value
-  },
-  setUser (state, value) {
-    state.user = value
   }
 }
 
@@ -29,7 +26,7 @@ const actions = {
       })
     })
   },
-  
+
   promiseCheck({dispatch, commit}) {
     dispatch('checkForActiveUser')
     .then((fulfilled) => {
@@ -53,7 +50,7 @@ const actions = {
 
   async logout({commit}) {
     await auth.signOut()
-    commit('setUser', null)
+    commit('setActiveUser', null)
     router.replace('/login')
   }
 }
