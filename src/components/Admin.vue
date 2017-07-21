@@ -2,14 +2,17 @@
   <div class="admin">
 
     <template v-if="user">
-      <div class="user">
+      <div class="leftSide">
         <h2 v-text="user.displayName"></h2>
         <img class="avatar" :src="user.photoURL" alt="">
+        <router-link to="/admin/settings">Settings</router-link>
       </div>
-      <router-link to="/admin/settings">Settings</router-link>
+
+
       <transition name="slide-left" mode="out-in">
         <router-view class="child-view"></router-view>
       </transition>
+
     </template>
 
   </div>
@@ -51,4 +54,25 @@ li {
   margin: 0 10px;
 }
 
+.admin {
+  display: flex;
+  height: 100%;
+}
+.child-view {
+  padding: 0 .5em;
+}
+
+button.back {
+  margin-left: 0;
+}
+.leftSide {
+  border-right: 2px solid gray;
+  display: flex;
+  flex-direction: column;
+  padding-right: .75em;
+  text-align: left;
+  justify-content: center;
+  width: 35%;
+  max-width: 300px;
+}
 </style>

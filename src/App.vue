@@ -50,7 +50,7 @@ main a {
   opacity: 0
 }
 .child-view {
-  position: absolute;
+  // position: absolute;
   transition: all .5s cubic-bezier(.55,0,.1,1);
 }
 .slide-left-enter, .slide-right-leave-active {

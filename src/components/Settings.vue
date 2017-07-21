@@ -1,7 +1,8 @@
 <template lang="html">
   <div class="settings">
+    <button class="back" @click="$router.push('/admin')">< Back</button>
     <h2>The Settings will go here</h2>
-    <button @click="$router.push('/admin')">Back</button>
+
   </div>
 </template>
 
@@ -11,5 +12,9 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
+button.back {
+  padding: .25em .5em;
+  min-width: 0;
+}
 </style>
