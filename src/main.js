@@ -14,8 +14,12 @@ router.beforeEach((to, from, next) => {
     let currentUser = store.state.user;
     let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-    if (requiresAuth && !currentUser) next('login')
-    if (routeIsLogin && currentUser) next('admin')
+    if (requiresAuth && !currentUser) {
+      next('login')
+    }
+    if (routeIsLogin && currentUser) {
+      next('admin')
+    }
     else next()
   })
 });
