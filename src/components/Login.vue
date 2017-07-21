@@ -11,7 +11,15 @@
       <div class="buttons">
         <button @click="loginGoogle">Login with Google</button>
         <!-- <button @click="loginGithub">Login Github</button> -->
-        <button @click="loginAnonymously">Login Anonymously</button>
+        <!-- <button @click="loginAnonymously">Login Anonymously</button> -->
+      </div>
+      <div class="emailSignIn">
+        <button @click="loginEmail(userLoginInfo)">Login with Email</button>
+        <label for="email">Email</label>
+        <input name="email" type="email" v-model="userLoginInfo.email">
+
+        <label for="email">Password</label>
+        <input name="password" type="text" v-model="userLoginInfo.password">
       </div>
     </template>
   </div>
@@ -21,7 +29,14 @@
 import {mapState} from 'vuex'
 export default {
   name: 'login',
-
+  data () {
+    return {
+      userLoginInfo: {
+        email: '',
+        password: ''
+      }
+    }
+  },
   computed: {
     ...mapState(['user'])
   },
@@ -29,6 +44,10 @@ export default {
   methods: {
     loginGoogle () {
       this.$store.dispatch('signInWithGoogle')
+    },
+
+    loginEmail (userLoginInfo) {
+      this.$store.dispatch('signInWithEmail', userLoginInfo)
     },
 
     loginGithub () {

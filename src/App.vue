@@ -3,11 +3,12 @@
     <header>
       <span class="siteTitle">Vuex-FireAdmin</span>
       <router-link to="/" exact >Home</router-link>
-      <router-link to="/admin" >Admin</router-link>
+      <router-link to="/sign-up">Sign Up</router-link>
     </header>
     <main>
       <div class="top">
         <h1 class="currentPage">{{$route.name}}</h1>
+
         <button class="logout" v-if="$store.state.user && $route.meta.requiresAuth" @click="logout">Logout</button>
       </div>
 
@@ -23,6 +24,7 @@
 
 export default {
   name: 'app',
+
   methods: {
     logout () {
       this.$store.dispatch('logout')

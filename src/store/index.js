@@ -35,7 +35,15 @@ const actions = {
         // An error happened.
     });
   },
-
+  signUpWithEmail({commit}, userInfo) {
+    let {email, password} = userInfo
+    auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
+  },
   signInWithGoogle({commit}) {
     auth.signInWithRedirect(GoogleProvider)
   },
@@ -43,7 +51,19 @@ const actions = {
   signInWithGithub () {
     auth.signInWithRedirect(GithubProvider)
   },
+  async signInWithEmail ({commit}, userInfo) {
+    let {email, password} = userInfo
 
+    auth.signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+      alert(errorMessage);
+    });
+    // let result = await auth.signInWithEmailAndPassword(email, password)
+    // console.log(result);
+  },
   signInAnonymously () {
     console.log('set this up');
   },

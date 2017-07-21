@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import Admin from '@/components/Admin'
 import Login from '@/components/Login'
 import Logout from '@/components/Logout'
+import SignUp from '@/components/SignUp'
 import Settings from '@/components/Settings'
 import store from '../store'
 
@@ -29,6 +30,11 @@ export default new Router({
                 component: Settings
               }
             ]
+    },
+    {
+      path: '/sign-up',
+      name: 'SignUp',
+      component: SignUp
     },
     {
       path: '/login',
