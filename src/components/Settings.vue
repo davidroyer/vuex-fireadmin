@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="settings">
-    <button class="back" @click="$router.push('/admin')">< Back</button>
+    <button class="back btn--raised btn-secondary" @click="$router.push('/admin')">< Back</button>
     <h2>The Settings will go here</h2>
 
   </div>

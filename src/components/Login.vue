@@ -1,5 +1,5 @@
 <template>
-  <div class="admin">
+  <div class="login">
     <template v-if="user">
         <button @click="logout">Logout</button>
       <div class="user">
@@ -9,7 +9,7 @@
     </template>
     <template v-else>
       <div class="buttons">
-        <button @click="loginGoogle">Login with Google</button>
+        <button class="btn--raised btn--primary"@click="loginGoogle">Login with Google</button>
         <!-- <button @click="loginGithub">Login Github</button> -->
         <!-- <button @click="loginAnonymously">Login Anonymously</button> -->
       </div>
@@ -20,7 +20,7 @@
 
         <label for="email">Password</label>
         <input name="password" type="text" v-model="userLoginInfo.password">
-        <button class="btn--raised btn--primary" @click="loginEmail(userLoginInfo)">Login with Email</button>
+        <button class="btn-mc btn--raised btn--primary" @click="loginEmail(userLoginInfo)">Login with Email</button>
 
       </div>
     </template>
@@ -73,6 +73,12 @@ h1, h2 {
   font-weight: normal;
 }
 
+.btn-mc {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .avatar {
   width: 100px;
 }
@@ -86,4 +92,10 @@ li {
   margin: 0 10px;
 }
 
+.buttons {
+  margin-bottom: 2em;
+border-bottom: 2px solid rgba(158, 158, 158, 0.5);
+width: 100%;
+padding-bottom: 1em;
+}
 </style>

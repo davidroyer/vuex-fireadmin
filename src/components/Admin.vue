@@ -7,6 +7,7 @@
         <img class="avatar" :src="user.photoURL" alt="">
         <h6 v-if="user.email">{{user.email}}</h6>
         <router-link to="/admin/settings">Settings</router-link>
+        <button class="btn--raised btn--secondary logout" @click="logout">Logout</button>
       </div>
 
 
@@ -38,9 +39,19 @@ export default {
 </script>
 
 <style>
-
+.logout {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
 h1, h2 {
   font-weight: normal;
+}
+h3 {
+  margin-bottom: 5px;
+}
+h6 {
+  word-break: break-all;
 }
 .displayName {
   margin-top: 0;
@@ -48,6 +59,7 @@ h1, h2 {
 .avatar {
   width: 100px;
   border-radius: 50%;
+  max-width: 100%;
 }
 ul {
   list-style-type: none;
@@ -65,10 +77,11 @@ li {
   /*flex-flow: row wrap;*/
 }
 .emailSignIn {
-  width: 100%;
+  /*width: 100%;*/
 }
 .child-view {
   padding: 0 .5em;
+  flex: 1 1 65%;
 }
 
 button.back {

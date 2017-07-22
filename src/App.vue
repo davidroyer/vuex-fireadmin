@@ -11,7 +11,7 @@
       <div class="top">
         <!-- <h1 class="">{{$route.name}}</h1> -->
 
-        <button class="logout" v-if="$store.state.user && $route.meta.requiresAuth" @click="logout">Logout</button>
+
       </div>
 
       <transition name="fade" mode="out-in">
@@ -36,6 +36,10 @@ export default {
 </script>
 
 <style lang="scss">
+
+html * {
+  box-sizing: border-box;
+}
 body {
   display: block;
 }
@@ -43,10 +47,17 @@ body {
   margin: .25em 0 .5em;
   font-weight: 600;
 }
+
+.view {
+  &.admin {
+    width: 100%;
+  }
+}
 main {
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
+  width: 100%;
   a {
     color: #35495e;
     text-align: left;
@@ -54,10 +65,10 @@ main {
   }
 }
 .logout {
-  flex: none;
-  padding: .25em .5em;
-  margin: 0;
-  min-width: 0;
+  // flex: none;
+  // padding: .25em .5em;
+  // margin: 0;
+  // min-width: 0;
 }
 .top {
   display: flex;
@@ -105,27 +116,27 @@ main {
   }
 }
 button {
-  -webkit-appearance: none;
-  background: inherit;
-  border: 2px solid #35495e;
-  padding: .75em 1em;
-  font-size: 16px;
-  font-family: inherit;
-  font-weight: 500;
-  border-radius: 3px;
-  flex: 1 1 150px;
-  margin: 1em;
-  max-width: 200px;
-  min-width: 150px;
-  cursor: pointer;
-  transition: .2s ease;
-  align-self: center;
-  &:hover {
-    background: rgba(53, 73, 94, 0.72);
-    color: white;
-    font-weight: 800;
-    text-decoration: underline;
-  }
+  // -webkit-appearance: none;
+  // background: inherit;
+  // border: 2px solid #35495e;
+  // padding: .75em 1em;
+  // font-size: 16px;
+  // font-family: inherit;
+  // font-weight: 500;
+  // border-radius: 3px;
+  // flex: 1 1 150px;
+  // margin: 1em;
+  // max-width: 200px;
+  // min-width: 150px;
+  // cursor: pointer;
+  // transition: .2s ease;
+  // align-self: center;
+  // &:hover {
+  //   background: rgba(53, 73, 94, 0.72);
+  //   color: white;
+  //   font-weight: 800;
+  //   text-decoration: underline;
+  // }
 }
 .siteTitle {
   flex: 1 1 100%;
@@ -153,6 +164,12 @@ a {
   color: #2c3e50;
 }
 
+.view.login {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
 main {
   // text-align: center;
 
@@ -180,5 +197,10 @@ header span {
   font-weight: 400;
   box-sizing: border-box;
   padding-top: 16px;
+}
+
+input {
+  font-size: 1em;
+font-weight: 500;
 }
 </style>
