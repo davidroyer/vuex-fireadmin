@@ -14,12 +14,14 @@
         <!-- <button @click="loginAnonymously">Login Anonymously</button> -->
       </div>
       <div class="emailSignIn">
-        <button @click="loginEmail(userLoginInfo)">Login with Email</button>
+
         <label for="email">Email</label>
         <input name="email" type="email" v-model="userLoginInfo.email">
 
         <label for="email">Password</label>
         <input name="password" type="text" v-model="userLoginInfo.password">
+        <button class="btn--raised btn--primary" @click="loginEmail(userLoginInfo)">Login with Email</button>
+
       </div>
     </template>
   </div>

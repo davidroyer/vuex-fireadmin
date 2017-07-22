@@ -3,9 +3,9 @@
 
     <template v-if="user">
       <div class="leftSide">
-        <h2 class="displayName" v-text="user.displayName"></h2>
+        <h3 class="" v-text="user.displayName"></h3>
         <img class="avatar" :src="user.photoURL" alt="">
-        <h3 v-if="user.email">{{user.email}}</h3>
+        <h6 v-if="user.email">{{user.email}}</h6>
         <router-link to="/admin/settings">Settings</router-link>
       </div>
 
@@ -62,7 +62,7 @@ li {
 .admin {
   display: flex;
   height: 100%;
-  flex-flow: row wrap;
+  /*flex-flow: row wrap;*/
 }
 .emailSignIn {
   width: 100%;

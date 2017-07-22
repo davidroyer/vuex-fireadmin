@@ -9,7 +9,7 @@
     </header>
     <main>
       <div class="top">
-        <h1 class="currentPage">{{$route.name}}</h1>
+        <h1 class="">{{$route.name}}</h1>
 
         <button class="logout" v-if="$store.state.user && $route.meta.requiresAuth" @click="logout">Logout</button>
       </div>
@@ -36,6 +36,9 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  display: block;
+}
 .currentPage {
   margin: .25em 0 .5em;
   font-weight: 600;
@@ -110,7 +113,7 @@ button {
   min-width: 150px;
   cursor: pointer;
   transition: .2s ease;
-
+  align-self: center;
   &:hover {
     background: rgba(53, 73, 94, 0.72);
     color: white;
