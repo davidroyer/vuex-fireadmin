@@ -5,6 +5,7 @@
       <div class="leftSide">
         <h2 class="displayName" v-text="user.displayName"></h2>
         <img class="avatar" :src="user.photoURL" alt="">
+        <h3 v-if="user.email">{{user.email}}</h3>
         <router-link to="/admin/settings">Settings</router-link>
       </div>
 
@@ -37,6 +38,7 @@ export default {
 </script>
 
 <style>
+
 h1, h2 {
   font-weight: normal;
 }
@@ -60,6 +62,10 @@ li {
 .admin {
   display: flex;
   height: 100%;
+  flex-flow: row wrap;
+}
+.emailSignIn {
+  width: 100%;
 }
 .child-view {
   padding: 0 .5em;

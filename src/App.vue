@@ -3,6 +3,8 @@
     <header>
       <span class="siteTitle">Vuex-FireAdmin</span>
       <router-link to="/" exact >Home</router-link>
+      <router-link to="/admin">Admin</router-link>
+      <router-link to="/login" >Login</router-link>
       <router-link to="/sign-up">Sign Up</router-link>
     </header>
     <main>
