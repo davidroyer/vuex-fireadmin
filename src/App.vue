@@ -9,7 +9,7 @@
     </header>
     <main>
       <div class="top">
-        <h1 class="">{{$route.name}}</h1>
+        <!-- <h1 class="">{{$route.name}}</h1> -->
 
         <button class="logout" v-if="$store.state.user && $route.meta.requiresAuth" @click="logout">Logout</button>
       </div>
@@ -44,7 +44,9 @@ body {
   font-weight: 600;
 }
 main {
-  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
   a {
     color: #35495e;
     text-align: left;
@@ -96,7 +98,11 @@ body {
 }
 main {
   padding: 1em 1em 3em;
-  padding-top: 0;
+  padding-top: 1em;
+
+  @media (min-width: 800px) {
+    padding-top: 3em;
+  }
 }
 button {
   -webkit-appearance: none;
@@ -162,6 +168,7 @@ header {
   align-items: center;
   flex-flow: row wrap;
   padding-bottom: 1.25em;
+  padding-top: 0;
 }
 
 header span {
