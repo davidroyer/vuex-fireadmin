@@ -5,7 +5,7 @@
 
     <label for="email">Password</label>
     <input name="password" type="text" v-model="newUser.password">
-    <button @click="signUp(newUser)">Sign Up</button>
+    <button class="btn--raised btn--primary" @click="signUp(newUser)">Sign Up</button>
 
   </div>
 </template>
