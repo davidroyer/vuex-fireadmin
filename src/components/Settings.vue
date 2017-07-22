@@ -16,5 +16,6 @@ export default {
 button.back {
   padding: .25em .5em;
   min-width: 0;
+  font-weight: 700;
 }
 </style>

@@ -7,7 +7,7 @@
         <img class="avatar" :src="user.photoURL" alt="">
         <h6 v-if="user.email">{{user.email}}</h6>
         <router-link to="/admin/settings">Settings</router-link>
-        <button class="btn--raised btn--secondary logout" @click="logout">Logout</button>
+        <button class="btn-raised btn--secondary logout" @click="logout">Logout</button>
       </div>
 
 

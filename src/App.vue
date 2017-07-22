@@ -203,4 +203,7 @@ input {
   font-size: 1em;
 font-weight: 500;
 }
+button {
+  font-size: 16px;
+}
 </style>
