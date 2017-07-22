@@ -1,4 +1,4 @@
-# vue-fireadmin
+# Vuex-FireAdmin
 
 > A Vue.js project
 
