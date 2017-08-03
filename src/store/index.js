@@ -54,7 +54,11 @@ const actions = {
     // auth.signInWithPopup(GoogleProvider)
     auth.signInWithRedirect(GoogleProvider)
   },
-
+  signInWithPopup({commit}) {
+    // window.open('/#/test')
+    auth.signInWithPopup(GoogleProvider)
+    // auth.signInWithRedirect(GoogleProvider)
+  },
   signInFromBrowser({commit}) {
     let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
     width=0,height=0,left=-1000,top=-1000`;

@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <button class="btn-raised btn--primary" @click="$store.dispatch('signInFromBrowser')">Open Auth in Browser</button>
+    <button class="btn-raised btn--primary" @click="$store.dispatch('signInWithPopup')">Open Auth in Browser</button>
     <a href="https://vuex-fireadmin.netlify.com/#/login" target="_blank">Login In Browser</a>
     <a href="http://nuxt-api-example.netlify.com/" target="_blank">Link Test</a>
     <div>
@@ -48,7 +48,8 @@ export default {
 
           },false);
       }
-    }
+    },
+    openUrlInBrowser() {}
 
   }
 }
