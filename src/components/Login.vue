@@ -9,6 +9,8 @@
     </template>
     <template v-else>
       <div class="buttons">
+        <a href="http://nuxt-api-example.netlify.com/" target="_blank">Link Test</a>
+        
         <button class="btn--raised btn--primary"@click="loginGoogle">Login with Google</button>
         <!-- <button @click="loginGithub">Login Github</button> -->
         <!-- <button @click="loginAnonymously">Login Anonymously</button> -->
