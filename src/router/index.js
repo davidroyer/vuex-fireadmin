@@ -2,10 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Admin from '@/components/Admin'
+import Settings from '@/components/Admin/Settings'
 import Login from '@/components/Login'
 import Logout from '@/components/Logout'
 import SignUp from '@/components/SignUp'
-import Settings from '@/components/Settings'
+import Test from '@/components/Test'
 import store from '../store'
 
 Vue.use(Router)
@@ -45,6 +46,11 @@ export default new Router({
       path: '/logout',
       name: 'Logout',
       component: Logout
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: Test
     }
   ]
 })

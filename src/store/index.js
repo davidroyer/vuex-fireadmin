@@ -6,12 +6,17 @@ import router from '../router'
 Vue.use(Vuex)
 
 const state = {
-  user: null
+  user: null,
+  items: [],
+  item: ''
 }
 
 const mutations = {
   setActiveUser (state, value) {
     state.user = value
+  },
+  setItems (state, value) {
+    state.items = value
   }
 }
 
@@ -45,12 +50,19 @@ const actions = {
     });
   },
   signInWithGoogle({commit}) {
+    // window.open('/#/test')
+    // auth.signInWithPopup(GoogleProvider)
     auth.signInWithRedirect(GoogleProvider)
+  },
+
+  signInFromBrowser({commit}) {
+    window.open('/#/test')
   },
 
   signInWithGithub () {
     auth.signInWithRedirect(GithubProvider)
   },
+
   async signInWithEmail ({commit}, userInfo) {
     let {email, password} = userInfo
 

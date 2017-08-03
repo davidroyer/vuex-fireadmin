@@ -1,14 +1,13 @@
 <template>
-  <div class="hello">
-    <button class="btn-raised btn--primary" @click="$store.dispatch('signInFromBrowser')">Open Auth in Browser</button>
-
+  <div class="settings">
+    <h1>Settings Inside Admin View</h1>
   </div>
 </template>
 
 <script>
 // import firebase, { auth, provider } from './firebase.js';
 export default {
-  name: 'hello'
+  name: 'settings'
 }
 </script>
 
